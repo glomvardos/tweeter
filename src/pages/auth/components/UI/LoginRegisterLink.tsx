@@ -7,7 +7,7 @@ interface Props {
 
 const LoginRegisterLink = ({ text, path }: Props) => {
   return (
-    <p className='text-right text-sm text-gray-500'>
+    <p className='text-right text-sm text-gray-500 pb-5 sm:pb-0'>
       {text}{' '}
       <Link to={path} className='capitalize text-primary-blue'>
         {path.replace('/', '')}

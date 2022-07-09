@@ -4,5 +4,4 @@ export interface TokenServiceTypes {
 
 export interface TokenTypes {
   access: string
-  refresh: string
 }

@@ -1,4 +1,8 @@
+import { useState } from 'react'
 import { useFormik } from 'formik'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+
 import Input from './components/UI/Input'
 import Label from './components/UI/Label'
 import Form from './components/UI/Form'
@@ -8,17 +12,31 @@ import Logo from '../../components/UI/Logo'
 import LoginRegisterLink from './components/UI/LoginRegisterLink'
 import { LoginTypes } from '../../interfaces/auth'
 import validationSchema from '../../utils/validationSchema'
+import authApi from '../../services/auth/authApi'
+import { saveToken } from '../../store/auth/auth.slice'
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const dispatch = useDispatch()
+
   const initialValues: LoginTypes = {
-    email: '',
-    password: '',
+    email: 'test@example.com',
+    password: '12345',
   }
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema.login,
-    onSubmit: values => {},
+    onSubmit: values => {
+      setIsLoading(true)
+      authApi
+        .login(values)
+        .then(res => {
+          dispatch(saveToken(res!.data))
+        })
+        .catch(err => toast.error(err.message))
+        .finally(() => setIsLoading(false))
+    },
   })
 
   return (
@@ -29,11 +47,18 @@ const Login = () => {
         title='Login'
         text='Enter your credentials to continue'
         btnText='Login'
+        isLoading={isLoading}
         onSubmit={formik.handleSubmit}
       >
         <InputWrapper>
           <Label text='Email' />
-          <Input id='Email' type='text' placeholder='Your email' {...formik.getFieldProps('email')} />
+          <Input
+            id='Email'
+            type='text'
+            placeholder='Your email'
+            hasError={formik.errors.email && formik.touched.email ? true : false}
+            {...formik.getFieldProps('email')}
+          />
         </InputWrapper>
         <InputWrapper>
           <Label text='Password' />
@@ -41,6 +66,7 @@ const Login = () => {
             id='Password'
             type='password'
             placeholder='Your password'
+            hasError={formik.errors.password && formik.touched.password ? true : false}
             {...formik.getFieldProps('password')}
           />
           <LoginRegisterLink text="Don't have an account?" path='/register' />
