@@ -3,7 +3,7 @@ import { HttpStatus } from '../../enums/HttpStatus'
 import { ServerError } from '../../interfaces/api'
 
 class Exceptions {
-  static unauthorized(error: AxiosError<ServerError>) {
+  protected unauthorized(error: AxiosError<ServerError>) {
     if (error && error.response?.status === HttpStatus.UNAUTHORIZED) {
       throw new Error(error.response.data.message)
     } else {
@@ -11,7 +11,7 @@ class Exceptions {
     }
   }
 
-  static forbidden(error: AxiosError<ServerError>) {
+  protected forbidden(error: AxiosError<ServerError>) {
     if (error && error.response?.status === HttpStatus.FORBIDDEN) {
       throw new Error(error.response.data.message)
     } else {

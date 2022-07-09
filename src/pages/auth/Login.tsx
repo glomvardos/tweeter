@@ -12,8 +12,9 @@ import Logo from '../../components/UI/Logo'
 import LoginRegisterLink from './components/UI/LoginRegisterLink'
 import { LoginTypes } from '../../interfaces/auth'
 import validationSchema from '../../utils/validationSchema'
-import authApi from '../../services/auth/authApi'
+import authApi from '../../services/auth/authService'
 import { saveToken } from '../../store/auth/auth.slice'
+import apiService from '../../services/api/apiService'
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -29,7 +30,7 @@ const Login = () => {
     validationSchema: validationSchema.login,
     onSubmit: values => {
       setIsLoading(true)
-      authApi
+      apiService
         .login(values)
         .then(res => {
           dispatch(saveToken(res!.data))

@@ -1,15 +1,15 @@
 import { TokenServiceTypes } from '../../interfaces/token'
 
 class TokenService {
-  saveToken({ token }: TokenServiceTypes) {
+  public saveToken({ token }: TokenServiceTypes) {
     localStorage.setItem('accessToken', token.access)
   }
 
-  removeToken() {
+  public removeToken() {
     localStorage.removeItem('accessToken')
   }
 
-  getAccessToken() {
+  public getAccessToken() {
     const accessToken = localStorage.getItem('accessToken')
     return accessToken
   }

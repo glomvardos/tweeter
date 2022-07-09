@@ -4,8 +4,8 @@ import { LoginTypes, RegisterTypes } from '../../interfaces/auth'
 import Exceptions from '../api/exceptions'
 import { ServerError } from '../../interfaces/api'
 
-class AuthApi extends Exceptions {
-  async login({ email, password }: LoginTypes) {
+class AuthService extends Exceptions {
+  public async login({ email, password }: LoginTypes) {
     try {
       return await axiosInstance.post('/auth/login', {
         email,
@@ -13,12 +13,12 @@ class AuthApi extends Exceptions {
       })
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        AuthApi.unauthorized(error as AxiosError<ServerError>)
+        this.unauthorized(error as AxiosError<ServerError>)
       }
     }
   }
 
-  async register({ firstname, lastname, email, password }: RegisterTypes) {
+  public async register({ firstname, lastname, email, password }: RegisterTypes) {
     try {
       return await axiosInstance.post('/auth/register', {
         firstname,
@@ -28,10 +28,10 @@ class AuthApi extends Exceptions {
       })
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        AuthApi.forbidden(error as AxiosError<ServerError>)
+        this.forbidden(error as AxiosError<ServerError>)
       }
     }
   }
 }
 
-export default new AuthApi()
+export default AuthService

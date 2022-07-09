@@ -12,8 +12,9 @@ import InputWrapper from '../../components/UI/InputWrapper'
 import LoginRegisterLink from './components/UI/LoginRegisterLink'
 import { RegisterTypes } from '../../interfaces/auth'
 import validationSchema from '../../utils/validationSchema'
-import authApi from '../../services/auth/authApi'
+import authApi from '../../services/auth/authService'
 import { routes } from '../../constants/routes'
+import apiService from '../../services/api/apiService'
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -31,7 +32,7 @@ const Register = () => {
     validationSchema: validationSchema.register,
     onSubmit: values => {
       setIsLoading(true)
-      authApi
+      apiService
         .register(values)
         .then(_ => {
           toast.success('You have successfully registered!')
