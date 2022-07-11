@@ -1,11 +1,13 @@
-import { ChildrenTypes } from '../../../../interfaces/children'
+import { ChildrenTypes } from "../../../../interfaces/children";
 
-const Container = ({ children }: ChildrenTypes) => {
+function Container({ children }: ChildrenTypes) {
   return (
-    <section className='flex h-full p-5 py-7'>
-      <div className='flex flex-col m-auto w-full items-center justify-center gap-6'>{children}</div>
+    <section className="flex h-full p-5 py-7">
+      <div className="flex flex-col m-auto w-full items-center justify-center gap-6">
+        {children}
+      </div>
     </section>
-  )
+  );
 }
 
-export default Container
+export default Container;

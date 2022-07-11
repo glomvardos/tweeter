@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 interface Props {
-  text: string
-  path: string
+  text: string;
+  path: string;
 }
 
 const LoginRegisterLink = ({ text, path }: Props) => {
   return (
-    <p className='text-right text-sm text-gray-500 pb-5 sm:pb-0'>
-      {text}{' '}
-      <Link to={path} className='capitalize text-primary-blue'>
-        {path.replace('/', '')}
+    <p className="text-right text-sm text-gray-500 pb-5 sm:pb-0">
+      {text}{" "}
+      <Link to={path} className="capitalize text-primary-blue">
+        {path.replace("/", "")}
       </Link>
     </p>
-  )
-}
+  );
+};
 
-export default LoginRegisterLink
+export default LoginRegisterLink;

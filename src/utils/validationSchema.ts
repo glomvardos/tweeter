@@ -1,11 +1,11 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
 class ValidationSchema {
   login() {
     return yup.object({
       email: yup.string().email().required(),
       password: yup.string().required(),
-    })
+    });
   }
 
   register() {
@@ -16,10 +16,10 @@ class ValidationSchema {
       password: yup.string().required(),
       confirmPassword: yup
         .string()
-        .oneOf([yup.ref('password'), null], 'Passwords must match')
+        .oneOf([yup.ref("password"), null], "Passwords must match")
         .required(),
-    })
+    });
   }
 }
 
-export default new ValidationSchema()
+export default new ValidationSchema();

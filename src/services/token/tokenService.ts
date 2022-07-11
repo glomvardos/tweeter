@@ -1,18 +1,19 @@
-import { TokenServiceTypes } from '../../interfaces/token'
+import { TokenServiceTypes } from "../../interfaces/token";
+import { TokenServiceInterface } from "./tokenService.interface";
 
-class TokenService {
+class TokenService implements TokenServiceInterface {
   public saveToken({ token }: TokenServiceTypes) {
-    localStorage.setItem('accessToken', token.access)
+    localStorage.setItem("accessToken", token.access);
   }
 
   public removeToken() {
-    localStorage.removeItem('accessToken')
+    localStorage.removeItem("accessToken");
   }
 
   public getAccessToken() {
-    const accessToken = localStorage.getItem('accessToken')
-    return accessToken
+    const accessToken = localStorage.getItem("accessToken");
+    return accessToken;
   }
 }
 
-export default new TokenService()
+export default new TokenService();

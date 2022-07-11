@@ -1,3 +1,3 @@
 export interface ServerError {
-  message: string
+  message: string;
 }

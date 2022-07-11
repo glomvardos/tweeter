@@ -1,20 +1,12 @@
-import AuthService from '../auth/authService'
-import Exceptions from './exceptions'
-
-const applyMixins = (derivedCtor: any, baseCtors: any[]) => {
-  baseCtors.forEach(baseCtor => {
-    Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-      if (name !== 'constructor') {
-        derivedCtor.prototype[name] = baseCtor.prototype[name]
-      }
-    })
-  })
-}
+import AuthService from "../auth/authService";
+import { applyMixins } from "../../mixins/applyMixins";
+import ExceptionsService from "../exceptions/ExceptionsService";
 
 class ApiService {}
 
+// eslint-disable-next-line no-redeclare
 interface ApiService extends AuthService {}
 
-applyMixins(ApiService, [AuthService, Exceptions])
+applyMixins(ApiService, [AuthService, ExceptionsService]);
 
-export default new ApiService()
+export default new ApiService();

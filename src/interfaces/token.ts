@@ -1,7 +1,7 @@
 export interface TokenServiceTypes {
-  token: TokenTypes
+  token: TokenTypes;
 }
 
 export interface TokenTypes {
-  access: string
+  access: string;
 }

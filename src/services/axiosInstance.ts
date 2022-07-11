@@ -1,21 +1,22 @@
-import axios from 'axios'
-import tokenService from './token/tokenService'
+import axios from "axios";
+import tokenService from "./token/tokenService";
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3333/api',
-})
+  baseURL: "http://localhost:3333/api",
+});
 
 axiosInstance.interceptors.request.use(
-  request => {
-    if (!request.url?.includes('login') && !request.url?.includes('register')) {
-      const token = tokenService.getAccessToken()
-      if (token && request.headers) request.headers.Authorization = `Bearer ${token}`
+  (request) => {
+    if (!request.url?.includes("login") && !request.url?.includes("register")) {
+      const token = tokenService.getAccessToken();
+      if (token && request.headers)
+        request.headers.Authorization = `Bearer ${token}`;
     }
-    return request
+    return request;
   },
-  error => {
-    return Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
   }
-)
+);
 
-export default axiosInstance
+export default axiosInstance;
