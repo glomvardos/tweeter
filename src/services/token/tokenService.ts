@@ -11,8 +11,7 @@ class TokenService implements TokenServiceInterface {
   }
 
   public getAccessToken() {
-    const accessToken = localStorage.getItem("accessToken");
-    return accessToken;
+    return localStorage.getItem("accessToken");
   }
 }
 

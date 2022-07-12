@@ -17,12 +17,17 @@ const AuthSlice = createSlice({
       state.token = action.payload.access;
       tokenService.saveToken({ token: action.payload });
     },
-    authUser: (state, action: PayloadAction<UserTypes>) => {
+    saveAuthUser: (state, action: PayloadAction<UserTypes>) => {
       state.authUser = action.payload;
+    },
+    logout: (state) => {
+      state.token = null;
+      state.authUser = null;
+      tokenService.removeToken();
     },
   },
 });
 
-export const { saveToken, authUser } = AuthSlice.actions;
+export const { saveToken, saveAuthUser, logout } = AuthSlice.actions;
 
 export default AuthSlice;
