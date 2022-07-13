@@ -9,7 +9,7 @@ const Dropdown = ({ showDropdown, children }: Props) => {
 
   return (
     <div
-      className={`${showDropdownClass} transition-opacity duration-200 absolute z-10 w-[200px] top-[80px] right-0 shadow-md rounded-xl p-4`}
+      className={` bg-white absolute z-10 w-[200px] top-[80px] right-0 shadow-md rounded-xl p-4 ${showDropdownClass} transition-opacity duration-200`}
     >
       {children}
     </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import tokenService from "./token/tokenService";
+import tokenMethods from "../utils/token/tokenMethods";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3333/api",
@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (request) => {
     if (!request.url?.includes("login") && !request.url?.includes("register")) {
-      const token = tokenService.getAccessToken();
+      const token = tokenMethods.getAccessToken();
       if (token && request.headers)
         request.headers.Authorization = `Bearer ${token}`;
     }

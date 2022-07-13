@@ -1,7 +1,7 @@
-class StringMethods {
-  public static capitalize(str: string): string {
+const stringMethods = {
+  capitalize: (str: string): string => {
     return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-}
+  },
+};
 
-export default StringMethods;
+export default stringMethods;

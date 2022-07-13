@@ -3,9 +3,9 @@ import axiosInstance from "../axiosInstance";
 import { LoginTypes, RegisterTypes } from "../../interfaces/auth";
 import { ServerError } from "../../interfaces/api";
 import { AuthServiceInterface } from "./authService.interface";
-import ExceptionsService from "../exceptions/ExceptionsService";
+import { apiException } from "../../utils/apiException";
 
-class AuthService extends ExceptionsService implements AuthServiceInterface {
+class AuthService implements AuthServiceInterface {
   public async login({ email, password }: LoginTypes) {
     try {
       return await axiosInstance.post("/auth/login", {
@@ -14,7 +14,7 @@ class AuthService extends ExceptionsService implements AuthServiceInterface {
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        this.unauthorized(error as AxiosError<ServerError>);
+        apiException(error as AxiosError<ServerError>);
       }
     }
   }
@@ -34,7 +34,7 @@ class AuthService extends ExceptionsService implements AuthServiceInterface {
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        this.forbidden(error as AxiosError<ServerError>);
+        apiException(error as AxiosError<ServerError>);
       }
     }
   }
@@ -44,7 +44,7 @@ class AuthService extends ExceptionsService implements AuthServiceInterface {
       return await axiosInstance.get("/users/authenticated-user");
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        this.forbidden(error as AxiosError<ServerError>);
+        apiException(error as AxiosError<ServerError>);
       }
     }
   }

@@ -1,4 +1,4 @@
-export interface TokenServiceTypes {
+export interface TokenMethodTypes {
   token: TokenTypes;
 }
 

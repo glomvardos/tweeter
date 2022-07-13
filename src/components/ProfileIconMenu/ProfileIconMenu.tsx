@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
 import ProfileIcon from "../UI/ProfileIcon";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import StringMethods from "../../utils/stringMethods";
+import stringMethods from "../../utils/stringMethods";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownItem from "../Dropdown/DropdownItem";
 import Divider from "../UI/Divider";
@@ -17,7 +17,7 @@ const ProfileIconMenu = () => {
   const fullName =
     authUser?.firstname &&
     authUser?.lastname &&
-    `${StringMethods.capitalize(authUser.firstname)} ${StringMethods.capitalize(
+    `${stringMethods.capitalize(authUser.firstname)} ${stringMethods.capitalize(
       authUser.lastname
     )}`;
 

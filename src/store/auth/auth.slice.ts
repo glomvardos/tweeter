@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TokenTypes } from "../../interfaces/token";
 import { AuthTypes } from "./auth.interface";
-import tokenService from "../../services/token/tokenService";
+import tokenMethods from "../../utils/token/tokenMethods";
 import { UserTypes } from "../../interfaces/user";
 
 const initialState: AuthTypes = {
-  token: tokenService.getAccessToken(),
+  token: tokenMethods.getAccessToken(),
   authUser: null,
 };
 
@@ -15,7 +15,7 @@ const AuthSlice = createSlice({
   reducers: {
     saveToken: (state, action: PayloadAction<TokenTypes>) => {
       state.token = action.payload.access;
-      tokenService.saveToken({ token: action.payload });
+      tokenMethods.saveToken({ token: action.payload });
     },
     saveAuthUser: (state, action: PayloadAction<UserTypes>) => {
       state.authUser = action.payload;
@@ -23,7 +23,7 @@ const AuthSlice = createSlice({
     logout: (state) => {
       state.token = null;
       state.authUser = null;
-      tokenService.removeToken();
+      tokenMethods.removeToken();
     },
   },
 });
