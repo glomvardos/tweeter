@@ -8,6 +8,7 @@ import { routes } from "./constants/routes";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./components/Routes/ProtectedRoutes";
 import Layout from "./containers/Layout";
+import Home from "./pages/Home/Home";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,7 @@ const App = () => {
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<Layout />}>
-            <Route path={routes.home} element={<div>Home</div>} />
+            <Route path={routes.home} element={<Home />} />
             <Route path={routes.explore} element={<div>Explore</div>} />
             <Route path={routes.bookmarks} element={<div>Bookmarks</div>} />
           </Route>

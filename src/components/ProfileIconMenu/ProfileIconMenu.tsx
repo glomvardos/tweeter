@@ -1,25 +1,36 @@
 import { MdKeyboardArrowDown, MdLogout, MdSettings } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import ProfileIcon from "../UI/ProfileIcon";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import stringMethods from "../../utils/stringMethods";
 import Dropdown from "../Dropdown/Dropdown";
 import DropdownItem from "../Dropdown/DropdownItem";
 import Divider from "../UI/Divider";
 import useToggleMenu from "../../hooks/useToggleMenu";
-import { logout } from "../../store/auth/auth.slice";
+import useCache from "../../hooks/useCache";
+import { UserTypes } from "../../interfaces/user";
+import tokenMethods from "../../utils/token/tokenMethods";
+import { routes } from "../../constants/routes";
+import { useQueryClient } from "react-query";
 
 const ProfileIconMenu = () => {
   const { ref, setIsOpen, isOpen } = useToggleMenu();
-  const authUser = useAppSelector((state) => state.auth.authUser);
-  const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
+  const { data: user } = useCache<UserTypes>("user");
+  const navigate = useNavigate();
   const fullName =
-    authUser?.firstname &&
-    authUser?.lastname &&
-    `${stringMethods.capitalize(authUser.firstname)} ${stringMethods.capitalize(
-      authUser.lastname
+    user?.firstname &&
+    user?.lastname &&
+    `${stringMethods.capitalize(user.firstname)} ${stringMethods.capitalize(
+      user.lastname
     )}`;
+
+  const onLogout = () => {
+    navigate(routes.login);
+    queryClient.clear();
+    tokenMethods.removeToken();
+  };
 
   return (
     <div ref={ref} className="relative h-full">
@@ -44,7 +55,7 @@ const ProfileIconMenu = () => {
           color="text-error"
           iconElement={<MdLogout size={23} />}
           text="Log out"
-          onClickHandler={() => dispatch(logout())}
+          onClickHandler={onLogout}
         />
       </Dropdown>
     </div>

@@ -1,16 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { useQuery } from "react-query";
-import { getAuthUser } from "../store/auth/auth.actions";
 import Header from "../components/Header/Header";
+import apiService from "../services/api/apiService";
+import useGetData from "../hooks/useGetData";
 
 const Layout = () => {
-  const dispatch = useAppDispatch();
-  const token = useAppSelector((state) => state.auth.token);
-
-  useQuery("user", () => dispatch(getAuthUser()), {
-    enabled: !!token,
-  });
+  useGetData({ queryKey: "user", queryFn: apiService.getAuthUser });
 
   return (
     <main className="flex flex-col h-full bg-[#F2F2F2]">

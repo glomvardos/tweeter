@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { useFormik } from "formik";
+import { useMutation } from "react-query";
+import { AxiosError } from "axios";
 import { toast } from "react-toastify";
-import { useAppDispatch } from "../../store/hooks";
+import { useNavigate } from "react-router-dom";
 
 import Input from "./components/UI/Input";
 import Label from "./components/UI/Label";
@@ -12,12 +13,27 @@ import Logo from "../../components/UI/Logo";
 import LoginRegisterLink from "./components/UI/LoginRegisterLink";
 import { LoginTypes } from "../../interfaces/auth";
 import validationSchema from "../../utils/validationSchema";
-import { saveToken } from "../../store/auth/auth.slice";
 import apiService from "../../services/api/apiService";
 
+import { ServerError } from "../../interfaces/api";
+import tokenMethods from "../../utils/token/tokenMethods";
+import { routes } from "../../constants/routes";
+
 const Login = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const { isLoading, mutate: onLogin } = useMutation(
+    (values: LoginTypes) => apiService.login(values),
+    {
+      onSuccess: (data) => {
+        tokenMethods.saveToken({ token: data?.data });
+        navigate(routes.home);
+      },
+      onError: (error: AxiosError<ServerError>) => {
+        toast.error(error.message);
+      },
+    }
+  );
 
   const initialValues: LoginTypes = {
     email: "test@example.com",
@@ -28,14 +44,7 @@ const Login = () => {
     initialValues,
     validationSchema: validationSchema.login,
     onSubmit: (values) => {
-      setIsLoading(true);
-      apiService
-        .login(values)
-        .then((res) => {
-          dispatch(saveToken(res!.data));
-        })
-        .catch((err) => toast.error(err.message))
-        .finally(() => setIsLoading(false));
+      onLogin(values);
     },
   });
 

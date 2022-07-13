@@ -41,7 +41,8 @@ class AuthService implements AuthServiceInterface {
 
   public async getAuthUser() {
     try {
-      return await axiosInstance.get("/users/authenticated-user");
+      const response = await axiosInstance.get("/users/authenticated-user");
+      return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
         apiException(error as AxiosError<ServerError>);

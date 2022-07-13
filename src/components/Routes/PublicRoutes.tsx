@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
 import { routes } from "../../constants/routes";
+import tokenMethods from "../../utils/token/tokenMethods";
 
 const PublicRoutes = () => {
-  const token = useAppSelector((state) => state.auth.token);
+  const token = tokenMethods.getAccessToken();
   return !token ? <Outlet /> : <Navigate to={routes.home} />;
 };
 
