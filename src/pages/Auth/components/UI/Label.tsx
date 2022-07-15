@@ -7,7 +7,8 @@ const Label = ({ text }: Props) => {
     <label htmlFor={text} className="text-gray-500 text-sm font-medium">
       {text}
     </label>
-  );
-};
+  )
+}
 
-export default Label;
+export default Label
+

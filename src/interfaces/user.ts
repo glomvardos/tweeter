@@ -6,3 +6,4 @@ export interface UserTypes {
   createdAt: string;
   updatedAt: string;
 }
+

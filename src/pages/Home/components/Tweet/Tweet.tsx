@@ -1,6 +1,6 @@
-import Divider from "../../../../components/UI/Divider";
-import TweetForm from "./TweetForm";
-import Text from "../UI/Text";
+import Divider from '../../../../components/UI/Divider'
+import TweetForm from './TweetForm'
+import Text from '../UI/Text'
 
 const Tweet = () => {
   return (
@@ -9,7 +9,7 @@ const Tweet = () => {
       <Divider />
       <TweetForm />
     </div>
-  );
-};
+  )
+}
 
-export default Tweet;
+export default Tweet

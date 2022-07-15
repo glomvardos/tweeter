@@ -1,16 +1,16 @@
-import { Route, Routes } from "react-router-dom";
-import { Slide, ToastContainer } from "react-toastify";
-import { QueryClientProvider, QueryClient } from "react-query";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import PublicRoutes from "./components/Routes/PublicRoutes";
-import { routes } from "./constants/routes";
-import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoutes from "./components/Routes/ProtectedRoutes";
-import Layout from "./containers/Layout";
-import Home from "./pages/Home/Home";
+import { Route, Routes } from 'react-router-dom'
+import { Slide, ToastContainer } from 'react-toastify'
+import { QueryClientProvider, QueryClient } from 'react-query'
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
+import PublicRoutes from './components/Routes/PublicRoutes'
+import { routes } from './constants/routes'
+import 'react-toastify/dist/ReactToastify.css'
+import ProtectedRoutes from './components/Routes/ProtectedRoutes'
+import Layout from './containers/Layout'
+import Home from './pages/Home/Home'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 const App = () => {
   return (
@@ -37,7 +37,7 @@ const App = () => {
         transition={Slide}
       />
     </QueryClientProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

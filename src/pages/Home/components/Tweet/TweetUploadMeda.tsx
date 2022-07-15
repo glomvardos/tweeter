@@ -1,4 +1,4 @@
-import { MdInsertPhoto } from "react-icons/md";
+import { MdInsertPhoto } from 'react-icons/md'
 
 const TweetUploadMedia = () => {
   return (
@@ -11,7 +11,8 @@ const TweetUploadMedia = () => {
       </label>
       <input id="upload" type="file" accept="image/*" className="hidden" />
     </>
-  );
-};
+  )
+}
 
-export default TweetUploadMedia;
+export default TweetUploadMedia
+

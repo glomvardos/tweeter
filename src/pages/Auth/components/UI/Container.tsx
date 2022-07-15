@@ -1,4 +1,4 @@
-import { ChildrenTypes } from "../../../../interfaces/children";
+import { ChildrenTypes } from '../../../../interfaces/children'
 
 function Container({ children }: ChildrenTypes) {
   return (
@@ -7,7 +7,8 @@ function Container({ children }: ChildrenTypes) {
         {children}
       </div>
     </section>
-  );
+  )
 }
 
-export default Container;
+export default Container
+

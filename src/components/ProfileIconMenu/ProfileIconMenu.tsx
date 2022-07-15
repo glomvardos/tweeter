@@ -1,36 +1,36 @@
-import { MdKeyboardArrowDown, MdLogout, MdSettings } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
-import { HiUsers } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
-import ProfileIcon from "../UI/ProfileIcon";
-import stringMethods from "../../utils/stringMethods";
-import Dropdown from "../Dropdown/Dropdown";
-import DropdownItem from "../Dropdown/DropdownItem";
-import Divider from "../UI/Divider";
-import useToggleMenu from "../../hooks/useToggleMenu";
-import useCache from "../../hooks/useCache";
-import { UserTypes } from "../../interfaces/user";
-import tokenMethods from "../../utils/token/tokenMethods";
-import { routes } from "../../constants/routes";
-import { useQueryClient } from "react-query";
+import { MdKeyboardArrowDown, MdLogout, MdSettings } from 'react-icons/md'
+import { FaUserCircle } from 'react-icons/fa'
+import { HiUsers } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
+import ProfileIcon from '../UI/ProfileIcon'
+import stringMethods from '../../utils/stringMethods'
+import Dropdown from '../Dropdown/Dropdown'
+import DropdownItem from '../Dropdown/DropdownItem'
+import Divider from '../UI/Divider'
+import useToggleMenu from '../../hooks/useToggleMenu'
+import useCache from '../../hooks/useCache'
+import { UserTypes } from '../../interfaces/user'
+import tokenMethods from '../../utils/token/tokenMethods'
+import { routes } from '../../constants/routes'
+import { useQueryClient } from 'react-query'
 
 const ProfileIconMenu = () => {
-  const { ref, setIsOpen, isOpen } = useToggleMenu();
-  const queryClient = useQueryClient();
-  const { data: user } = useCache<UserTypes>("user");
-  const navigate = useNavigate();
+  const { ref, setIsOpen, isOpen } = useToggleMenu()
+  const queryClient = useQueryClient()
+  const { data: user } = useCache<UserTypes>('user')
+  const navigate = useNavigate()
   const fullName =
     user?.firstname &&
     user?.lastname &&
     `${stringMethods.capitalize(user.firstname)} ${stringMethods.capitalize(
-      user.lastname
-    )}`;
+      user.lastname,
+    )}`
 
   const onLogout = () => {
-    navigate(routes.login);
-    queryClient.clear();
-    tokenMethods.removeToken();
-  };
+    navigate(routes.login)
+    queryClient.clear()
+    tokenMethods.removeToken()
+  }
 
   return (
     <div ref={ref} className="relative h-full">
@@ -43,7 +43,7 @@ const ProfileIconMenu = () => {
         <MdKeyboardArrowDown size={20} />
       </div>
 
-      <Dropdown showDropdown={isOpen} style={{ top: "80px", right: "0" }}>
+      <Dropdown showDropdown={isOpen} style={{ top: '80px', right: '0' }}>
         <DropdownItem
           iconElement={<FaUserCircle size={20} />}
           text="My Profile"
@@ -59,7 +59,7 @@ const ProfileIconMenu = () => {
         />
       </Dropdown>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileIconMenu;
+export default ProfileIconMenu

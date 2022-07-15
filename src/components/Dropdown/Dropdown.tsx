@@ -1,4 +1,4 @@
-import { ChildrenTypes } from "../../interfaces/children";
+import { ChildrenTypes } from '../../interfaces/children'
 
 interface Props extends ChildrenTypes {
   showDropdown: boolean;
@@ -11,8 +11,8 @@ interface Style {
 
 const Dropdown = ({ showDropdown, style, children }: Props) => {
   const showDropdownClass = showDropdown
-    ? "opacity-100 scale-100"
-    : "opacity-0 scale-0";
+    ? 'opacity-100 scale-100'
+    : 'opacity-0 scale-0'
 
   return (
     <div
@@ -21,7 +21,8 @@ const Dropdown = ({ showDropdown, style, children }: Props) => {
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Dropdown;
+export default Dropdown
+

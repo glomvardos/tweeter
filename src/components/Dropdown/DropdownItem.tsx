@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react'
 
 interface Props {
   iconElement: ReactElement;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const DropdownItem = ({
-  color = "text-primary-text",
+  color = 'text-primary-text',
   iconElement,
   text,
   onClickHandler,
@@ -21,7 +21,8 @@ const DropdownItem = ({
       {iconElement}
       <p>{text}</p>
     </div>
-  );
-};
+  )
+}
 
-export default DropdownItem;
+export default DropdownItem
+

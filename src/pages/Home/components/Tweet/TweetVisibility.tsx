@@ -1,10 +1,10 @@
-import { IoEarth } from "react-icons/io5";
-import { HiUsers } from "react-icons/hi";
-import Dropdown from "../../../../components/Dropdown/Dropdown";
-import useToggleMenu from "../../../../hooks/useToggleMenu";
-import Text from "../UI/Text";
-import Divider from "../../../../components/UI/Divider";
-import DropdownItem from "../../../../components/Dropdown/DropdownItem";
+import { IoEarth } from 'react-icons/io5'
+import { HiUsers } from 'react-icons/hi'
+import Dropdown from '../../../../components/Dropdown/Dropdown'
+import useToggleMenu from '../../../../hooks/useToggleMenu'
+import Text from '../UI/Text'
+import Divider from '../../../../components/UI/Divider'
+import DropdownItem from '../../../../components/Dropdown/DropdownItem'
 
 interface Props {
   tweetVisibility: string;
@@ -12,12 +12,12 @@ interface Props {
 }
 
 const TweetVisibility = ({ tweetVisibility, setTweetVisibility }: Props) => {
-  const { isOpen, setIsOpen, ref } = useToggleMenu();
+  const { isOpen, setIsOpen, ref } = useToggleMenu()
 
   const onSelectVisibility = (visibility: string) => {
-    setTweetVisibility(visibility);
-    setIsOpen(false);
-  };
+    setTweetVisibility(visibility)
+    setIsOpen(false)
+  }
 
   return (
     <div ref={ref} className="relative">
@@ -32,23 +32,23 @@ const TweetVisibility = ({ tweetVisibility, setTweetVisibility }: Props) => {
         <Text text={tweetVisibility} color="text-primary-blue" pb="pb-0" />
       </div>
 
-      <Dropdown showDropdown={isOpen} style={{ top: "60px" }}>
+      <Dropdown showDropdown={isOpen} style={{ top: '60px' }}>
         <Text text="Who can see this?" color="text-black" />
         <Text text="Choose who can see this tweet" color="text-primary-text" />
         <Divider />
         <DropdownItem
           iconElement={<IoEarth size={20} />}
           text="Everyone"
-          onClickHandler={() => onSelectVisibility("Everyone")}
+          onClickHandler={() => onSelectVisibility('Everyone')}
         />
         <DropdownItem
           iconElement={<HiUsers size={20} />}
-          onClickHandler={() => onSelectVisibility("People you follow")}
+          onClickHandler={() => onSelectVisibility('People you follow')}
           text="People you follow"
         />
       </Dropdown>
     </div>
-  );
-};
+  )
+}
 
-export default TweetVisibility;
+export default TweetVisibility

@@ -1,4 +1,4 @@
-import logo from "../../assets/images/tweeter.svg";
+import logo from '../../assets/images/tweeter.svg'
 
 interface Props {
   width?: number;
@@ -11,10 +11,11 @@ const Logo = ({ width = 180, onClickHandler }: Props) => {
       src={logo}
       alt="logo"
       width={width}
-      className={`${onClickHandler ? "cursor-pointer" : "cursor-default"}`}
+      className={`${onClickHandler ? 'cursor-pointer' : 'cursor-default'}`}
       onClick={onClickHandler}
     />
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo
+

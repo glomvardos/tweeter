@@ -1,10 +1,11 @@
-import { useQueryClient } from "react-query";
+import { useQueryClient } from 'react-query'
 
 const useCache = <T extends unknown>(key: string) => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
   return {
     data: queryClient.getQueryData<T>(key),
-  };
-};
+  }
+}
 
-export default useCache;
+export default useCache
+

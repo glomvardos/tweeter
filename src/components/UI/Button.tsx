@@ -13,7 +13,8 @@ const Button = ({ text, onClickHandler, px, py }: Props) => {
     >
       {text}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
+

@@ -1,7 +1,8 @@
-import Tweet from "./components/Tweet/Tweet";
+import Tweet from './components/Tweet/Tweet'
 
 const Home = () => {
-  return <Tweet />;
-};
+  return <Tweet />
+}
 
-export default Home;
+export default Home
+

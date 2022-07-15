@@ -1,5 +1,5 @@
-import { AxiosResponse } from "axios";
-import { LoginTypes, RegisterTypes } from "../../interfaces/auth";
+import { AxiosResponse } from 'axios'
+import { LoginTypes, RegisterTypes } from '../../interfaces/auth'
 
 export interface AuthServiceInterface {
   login({
@@ -16,3 +16,4 @@ export interface AuthServiceInterface {
 
   getAuthUser(): Promise<AxiosResponse<any, any> | undefined>;
 }
+

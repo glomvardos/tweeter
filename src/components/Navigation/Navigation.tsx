@@ -1,5 +1,5 @@
-import NavLink from "./NavLink";
-import { routes } from "../../constants/routes";
+import NavLink from './NavLink'
+import { routes } from '../../constants/routes'
 
 const Navigation = () => {
   return (
@@ -8,7 +8,8 @@ const Navigation = () => {
       <NavLink text="Explore" path={routes.explore} />
       <NavLink text="Bookmarks" path={routes.bookmarks} />
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
+

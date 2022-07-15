@@ -3,7 +3,8 @@ interface Props {
 }
 
 const ProfileIcon = ({ imgSrc }: Props) => {
-  return <img src={imgSrc} alt="" />;
-};
+  return <img src={imgSrc} alt="" />
+}
 
-export default ProfileIcon;
+export default ProfileIcon
+

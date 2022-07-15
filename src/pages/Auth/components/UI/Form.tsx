@@ -1,8 +1,8 @@
-import Spinner from "../../../../components/UI/Spinner";
-import { ChildrenTypes } from "../../../../interfaces/children";
+import Spinner from '../../../../components/UI/Spinner'
+import { ChildrenTypes } from '../../../../interfaces/children'
 
 interface Props extends ChildrenTypes {
-  display: "flex" | "grid";
+  display: 'flex' | 'grid';
   title: string;
   text: string;
   btnText: string;
@@ -20,9 +20,9 @@ const Form = ({
   ...restProps
 }: Props) => {
   const formDisplay =
-    display === "flex"
-      ? "flex flex-col gap-6"
-      : "grid grid-cols-1 sm:grid-cols-2 gap-8";
+    display === 'flex'
+      ? 'flex flex-col gap-6'
+      : 'grid grid-cols-1 sm:grid-cols-2 gap-8'
 
   return (
     <form
@@ -43,7 +43,7 @@ const Form = ({
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 interface Props {
   text: string;
@@ -8,12 +8,13 @@ interface Props {
 const LoginRegisterLink = ({ text, path }: Props) => {
   return (
     <p className="text-right text-sm text-gray-500 pb-5 sm:pb-0">
-      {text}{" "}
+      {text}{' '}
       <Link to={path} className="capitalize text-primary-blue">
-        {path.replace("/", "")}
+        {path.replace('/', '')}
       </Link>
     </p>
-  );
-};
+  )
+}
 
-export default LoginRegisterLink;
+export default LoginRegisterLink
+
