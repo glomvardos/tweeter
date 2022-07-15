@@ -43,7 +43,7 @@ const ProfileIconMenu = () => {
         <MdKeyboardArrowDown size={20} />
       </div>
 
-      <Dropdown showDropdown={isOpen}>
+      <Dropdown showDropdown={isOpen} style={{ top: "80px", right: "0" }}>
         <DropdownItem
           iconElement={<FaUserCircle size={20} />}
           text="My Profile"
