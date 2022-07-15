@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { Slide, ToastContainer } from "react-toastify";
 import { QueryClientProvider, QueryClient } from "react-query";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 import PublicRoutes from "./components/Routes/PublicRoutes";
 import { routes } from "./constants/routes";
 import "react-toastify/dist/ReactToastify.css";
