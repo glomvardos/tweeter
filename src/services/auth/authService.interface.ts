@@ -5,15 +5,15 @@ export interface AuthServiceInterface {
   login({
     email,
     password,
-  }: LoginTypes): Promise<AxiosResponse<any, any> | undefined>;
+  }: LoginTypes): Promise<AxiosResponse | undefined>;
 
   register({
     firstname,
     lastname,
     email,
     password,
-  }: RegisterTypes): Promise<AxiosResponse<any, any> | undefined>;
+  }: RegisterTypes): Promise<AxiosResponse | undefined>;
 
-  getAuthUser(): Promise<AxiosResponse<any, any> | undefined>;
+  getAuthUser(): Promise<AxiosResponse | undefined>;
 }
 
