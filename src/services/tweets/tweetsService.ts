@@ -1,10 +1,11 @@
 import axios, { AxiosError } from 'axios'
-import { CreateTweetTypes } from '../../interfaces/tweet'
-import { apiException } from '../../utils/apiException'
-import { ServerError } from '../../interfaces/api'
 import axiosInstance from '../axiosInstance'
+import { apiException } from '../../utils/apiException'
+import { CreateTweetTypes } from '../../interfaces/tweet'
+import { ServerError } from '../../interfaces/api'
+import { TweetServiceInterface } from './tweetService.interface'
 
-class TweetsService {
+class TweetsService implements TweetServiceInterface {
   public async createTweet({ description, isPublic }:CreateTweetTypes) {
     try {
       return await axiosInstance.post('/tweets/tweet', { description, isPublic })

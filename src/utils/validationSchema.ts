@@ -7,7 +7,6 @@ const validationSchema = {
       password: yup.string().required(),
     })
   },
-
   register: () => {
     return yup.object({
       firstname: yup.string().required(),
@@ -18,6 +17,12 @@ const validationSchema = {
         .string()
         .oneOf([yup.ref('password'), null], 'Passwords must match')
         .required(),
+    })
+  },
+
+  createTweet: () => {
+    return yup.object({
+      description: yup.string().required(),
     })
   },
 }

@@ -7,17 +7,19 @@ import Divider from '../../../../components/UI/Divider'
 import DropdownItem from '../../../../components/Dropdown/DropdownItem'
 
 interface Props {
-  tweetVisibility: string;
-  setTweetVisibility: React.Dispatch<React.SetStateAction<string>>;
+  isPublic: boolean;
+  setIsPublic: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TweetVisibility = ({ tweetVisibility, setTweetVisibility }: Props) => {
+const TweetVisibility = ({ isPublic, setIsPublic }: Props) => {
   const { isOpen, setIsOpen, ref } = useToggleMenu()
 
-  const onSelectVisibility = (visibility: string) => {
-    setTweetVisibility(visibility)
+  const onSelectVisibility = (isVisible: boolean) => {
+    setIsPublic(isVisible)
     setIsOpen(false)
   }
+
+  const tweetVisibility = isPublic ? 'Everyone' : 'People you follow'
 
   return (
     <div ref={ref} className="relative">
@@ -39,11 +41,11 @@ const TweetVisibility = ({ tweetVisibility, setTweetVisibility }: Props) => {
         <DropdownItem
           iconElement={<IoEarth size={20} />}
           text="Everyone"
-          onClickHandler={() => onSelectVisibility('Everyone')}
+          onClickHandler={() => onSelectVisibility(true)}
         />
         <DropdownItem
           iconElement={<HiUsers size={20} />}
-          onClickHandler={() => onSelectVisibility('People you follow')}
+          onClickHandler={() => onSelectVisibility(false)}
           text="People you follow"
         />
       </Dropdown>

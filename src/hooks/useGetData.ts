@@ -21,13 +21,11 @@ const useGetData = <T extends unknown>({ queryKey, queryFn }: Props) => {
 
   const serverError = error as AxiosError<ServerError>
 
-  const returnedData: DataTypes<T> = {
+  return {
     isLoading,
     data,
     serverError,
-  }
-
-  return returnedData
+  } as DataTypes<T>
 }
 
 export default useGetData

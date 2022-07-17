@@ -1,39 +1,30 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
-import { useMutation, useQueryClient } from 'react-query'
-import { toast } from 'react-toastify'
-import { AxiosError } from 'axios'
 import Button from '../../../../components/UI/Button'
 import TweetUploadMedia from './TweetUploadMedia'
 import TweetVisibility from './TweetVisibility'
 
-import { CreateTweetTypes } from '../../../../interfaces/tweet'
 import apiService from '../../../../services/api/apiService'
-import { ServerError } from '../../../../interfaces/api'
+import useUpdateData from '../../../../hooks/useUpdateData'
+import validationSchema from '../../../../utils/validationSchema'
 
 
 const TweetForm = () => {
-  const [tweetVisibility, setTweetVisibility] = useState<string>('Everyone')
-  const queryClient = useQueryClient()
-  // TODO: handle is loading
-  const {  mutate: createTweet } = useMutation((values: CreateTweetTypes) => apiService.createTweet(values),
-    {
-      onSuccess: async () => {
-        await queryClient.invalidateQueries('tweets')
-      },
-      onError:(error: AxiosError<ServerError>) => {
-        toast.error(error.message)
-      },
-    })
+  const [isPublic, setIsPublic] = useState<boolean>(true)
+  const { isLoading, mutate:createTweet } = useUpdateData({ key: 'tweets', mutationFn: apiService.createTweet })
 
   const initialValues = {
     description: '',
   }
   const formik = useFormik({
     initialValues,
+    validationSchema: validationSchema.createTweet(),
     onSubmit: async (values) => {
-      // TODO: handle is public
-      createTweet({ description: values.description, isPublic: true })
+      createTweet({ description: values.description, isPublic }, {
+        onSuccess: () => {
+          formik.resetForm()
+        },
+      })
     },
   })
 
@@ -48,16 +39,13 @@ const TweetForm = () => {
       <div className="flex justify-between items-center">
         <div className="flex gap-2 items-center">
           <TweetUploadMedia />
-          <TweetVisibility
-            tweetVisibility={tweetVisibility}
-            setTweetVisibility={setTweetVisibility}
-          />
+          <TweetVisibility isPublic={isPublic} setIsPublic={setIsPublic}/>
         </div>
         <Button
           text="Tweet"
-          onClickHandler={() => {}}
           px="px-6"
           py="py-[10px]"
+          isLoading={isLoading}
         />
       </div>
     </form>
