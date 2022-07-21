@@ -7,8 +7,10 @@ import PublicRoutes from './components/Routes/PublicRoutes'
 import { routes } from './constants/routes'
 import 'react-toastify/dist/ReactToastify.css'
 import ProtectedRoutes from './components/Routes/ProtectedRoutes'
-import Layout from './containers/Layout'
+import Layout from './containers/Layout/Layout'
 import Home from './pages/Home/Home'
+import RenderIf from './components/UI/RenderIf'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 
@@ -36,6 +38,9 @@ const App = () => {
         pauseOnFocusLoss={false}
         transition={Slide}
       />
+      <RenderIf isTrue={process.env.NODE_ENV === 'development'}>
+        <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+      </RenderIf>
     </QueryClientProvider>
   )
 }

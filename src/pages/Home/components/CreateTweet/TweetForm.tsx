@@ -43,8 +43,8 @@ const TweetForm = () => {
         </div>
         <Button
           text="Tweet"
-          px="px-6"
-          py="py-[10px]"
+          width="w-[81px]"
+          height="h-[32px]"
           isLoading={isLoading}
         />
       </div>

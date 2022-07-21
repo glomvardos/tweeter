@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   return (
-    <header className="h-[70px] bg-white flex items-center justify-between px-5 md:px-8 lg:px-16 shadow-sm">
+    <header className="h-[70px] z-10 bg-white flex items-center justify-between px-5 md:px-8 lg:px-16 shadow-sm top-0 sticky">
       <Logo width={140} onClickHandler={() => navigate(routes.home)} />
       <Navigation />
       <ProfileIconMenu />

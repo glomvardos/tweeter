@@ -1,7 +1,23 @@
-import Tweet from './components/Tweet/Tweet'
+import CreateTweet from './components/CreateTweet/CreateTweet'
+import useGetData from '../../hooks/useGetData'
+import { TweetTypes } from '../../interfaces/tweet'
+import apiService from '../../services/api/apiService'
+import Tweets from '../../containers/Tweets/Tweets'
+import WhoToFollow from './components/WhoToFollow/WhoToFollow'
+
 
 const Home = () => {
-  return <Tweet />
+  const { data: tweets } = useGetData<TweetTypes[]>({ queryKey: 'tweets', queryFn: apiService.getTweets })
+
+  return (
+    <div className='flex gap-6'>
+      <div>
+        <CreateTweet />
+        <Tweets tweets={tweets} />
+      </div>
+      <WhoToFollow/>
+    </div>
+  )
 }
 
 export default Home

@@ -2,7 +2,7 @@ import Divider from '../../../../components/UI/Divider'
 import TweetForm from './TweetForm'
 import Text from '../UI/Text'
 
-const Tweet = () => {
+const CreateTweet = () => {
   return (
     <div className="w-full rounded-xl shadow-sm bg-white p-5">
       <Text text="Tweet something" color="text-black" />
@@ -12,4 +12,4 @@ const Tweet = () => {
   )
 }
 
-export default Tweet
+export default CreateTweet
