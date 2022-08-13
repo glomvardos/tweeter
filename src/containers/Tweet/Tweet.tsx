@@ -1,17 +1,20 @@
+import { useState }    from 'react'
 import { TweetTypes } from '../../interfaces/tweet'
-import UserIcon from '../UI/UserIcon'
-import TweetUserDetails from './TweetUserDetails'
-import Divider from '../UI/Divider'
-import TweetActions from './TweetActions'
-import TweetActionsCount from './TweetActionsCount'
-import TweetDescription from './TweetDescription'
+import UserIcon from '../../components/UI/UserIcon'
+import TweetUserDetails from '../../components/Tweet/TweetUserDetails'
+import Divider from '../../components/UI/Divider'
+import TweetActions from '../../components/Tweet/TweetActions'
+import TweetActionsCount from '../../components/Tweet/TweetActionsCount'
+import TweetDescription from '../../components/Tweet/TweetDescription'
 import placeholder from '../../assets/images/placeholder.png'
+import TweetComments from '../../components/Tweet/TweetComments'
 
 interface Props {
   tweet: TweetTypes
 }
 
 const Tweet = ({ tweet }:Props) => {
+  const [showComments, setShowComments] = useState<boolean>(false)
 
   return (
     <div className='bg-white rounded-xl shadow-sm p-5'>
@@ -26,8 +29,10 @@ const Tweet = ({ tweet }:Props) => {
       </div>
       <TweetActionsCount/>
       <Divider/>
-      <TweetActions/>
+      <TweetActions setShowComments={setShowComments}/>
       <Divider/>
+
+      <TweetComments showComments={showComments} tweetId={tweet.id}/>
     </div>
   )
 }

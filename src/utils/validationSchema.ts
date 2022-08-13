@@ -19,13 +19,18 @@ const validationSchema = {
         .required(),
     })
   },
-
   createTweet: () => {
     return yup.object({
       description: yup.string().required(),
     })
   },
+  createComment: () => {
+    return yup.object({
+      comment: yup.string().required(),
+    })
+  },
 }
+
 
 export default validationSchema
 

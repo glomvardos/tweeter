@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { TweetTypes } from '../../interfaces/tweet'
-import Tweet from '../../components/Tweet/Tweet'
+import Tweet from '../Tweet/Tweet'
 
 interface Props {
   tweets: TweetTypes[]
