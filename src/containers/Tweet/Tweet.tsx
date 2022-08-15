@@ -1,4 +1,4 @@
-import { useState }    from 'react'
+import { useState, useMemo }    from 'react'
 import { TweetTypes } from '../../interfaces/tweet'
 import UserIcon from '../../components/UI/UserIcon'
 import TweetUserDetails from '../../components/Tweet/TweetUserDetails'
@@ -15,11 +15,12 @@ interface Props {
 
 const Tweet = ({ tweet }:Props) => {
   const [showComments, setShowComments] = useState<boolean>(false)
+  useMemo(() => tweet.comments.sort((a, b) => b.createdAt.localeCompare(a.createdAt)), [tweet])
 
   return (
     <div className='bg-white rounded-xl shadow-sm p-5'>
       <div className='flex'>
-        <UserIcon width='w-10'/>
+        <UserIcon width='w-12'/>
         <TweetUserDetails firstname={tweet.user.firstname} lastname={tweet.user.lastname}
           createdAt={tweet.createdAt}/>
       </div>
@@ -27,12 +28,11 @@ const Tweet = ({ tweet }:Props) => {
       <div className='w-full h-full'>
         <img src={placeholder} className='rounded-xl w-full aspect-[4/3]  md:aspect-[2/1]' alt=''/>
       </div>
-      <TweetActionsCount/>
+      <TweetActionsCount commentsCount={tweet.comments.length}/>
       <Divider/>
       <TweetActions setShowComments={setShowComments}/>
       <Divider/>
-
-      <TweetComments showComments={showComments} tweetId={tweet.id}/>
+      <TweetComments comments={tweet.comments} showComments={showComments} tweetId={tweet.id}/>
     </div>
   )
 }

@@ -8,10 +8,11 @@ import { apiException } from '../../utils/apiException'
 class AuthService implements AuthServiceInterface {
   public async login({ email, password }: LoginTypes) {
     try {
-      return await axiosInstance.post('/auth/login', {
+      const response = await axiosInstance.post('/auth/login', {
         email,
         password,
       })
+      return response
     } catch (error) {
       if (axios.isAxiosError(error)) {
         apiException(error as AxiosError<ServerError>)
@@ -26,12 +27,13 @@ class AuthService implements AuthServiceInterface {
     password,
   }: RegisterTypes) {
     try {
-      return await axiosInstance.post('/auth/register', {
+      const response = await axiosInstance.post('/auth/register', {
         firstname,
         lastname,
         email,
         password,
       })
+      return response
     } catch (error) {
       if (axios.isAxiosError(error)) {
         apiException(error as AxiosError<ServerError>)

@@ -1,4 +1,4 @@
-import { UserTypes } from './user'
+import { CommentLikeTypes } from './likes'
 
 export interface CreateTweetTypes {
   description: string;
@@ -14,18 +14,18 @@ export interface TweetTypes {
     firstname: string
     lastname: string
   }
-  comments: TweetCommentsTypes[]
+  comments: TweetCommentTypes[]
 }
 
-export interface TweetCommentsTypes {
+export interface TweetCommentTypes {
   id: number
   createdAt: string
-  updatedAt: string
   description: string
-  tweetId: number
-  tweet: TweetTypes
-  userId: number
-  user: UserTypes
+  user: {
+    firstname: string
+    lastname: string
+  }
+  likes: CommentLikeTypes[]
 }
 
 export interface CreateTweetCommentTypes {

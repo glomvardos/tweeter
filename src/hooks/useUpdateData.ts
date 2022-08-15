@@ -14,7 +14,7 @@ const useUpdateData = <T extends unknown>  ({ key, mutationFn }:Props<T>) => {
     onSuccess: async () => {
       await queryClient.invalidateQueries(key)
     },
-    onError:  (apiError:AxiosError<ServerError>) => {
+    onError: (apiError:AxiosError<ServerError>) => {
       toast.error(apiError.message)
     },
   })

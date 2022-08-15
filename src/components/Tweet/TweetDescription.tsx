@@ -12,9 +12,7 @@ const TweetDescription = ({ description }:Props) => {
 
   const textMaxLength = width! < 640 ? 140 : width! < 1024 ? 250 : 350
 
-  const handleExpand = () => {
-    setIsExpanded(prevState => !prevState)
-  }
+  const handleExpand = () => setIsExpanded(prevState => !prevState)
 
   return (
     <div className='text-primary-text my-5 whitespace-pre-line'>
