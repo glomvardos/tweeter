@@ -1,10 +1,7 @@
-import { useMemo } from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import useUpdateData from '../../hooks/useUpdateData'
-import useCache from '../../hooks/useCache'
 import apiService from '../../services/api/apiService'
 import { TweetCommentTypes } from '../../interfaces/tweet'
-import { UserTypes } from '../../interfaces/user'
 
 interface Props {
   commentId: number
@@ -17,7 +14,6 @@ const TweetCommentLike = ({ commentId, likes, totalLikes }:Props) => {
   const { mutate: likeOrUnlikeComment } = useUpdateData({ key: 'tweets', mutationFn: isLiked ? apiService.unlikeComment : apiService.likeComment })
   const resourceId = isLiked ? likes[0].id : commentId
 
-  console.log(likes)
   return (
     <div className='flex items-center text-[#BDBDBD] text-sm font-semibold gap-2'>
       <AiOutlineHeart size={18} className={`${isLiked ? 'text-error' : 'text-[#BDBDBD]'} cursor-pointer`} onClick={() => likeOrUnlikeComment(resourceId)} />
