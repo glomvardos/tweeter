@@ -1,4 +1,4 @@
-import { CommentLikeTypes } from './likes'
+import { CommentLikeCountTypes, CommentLikeTypes } from './likes'
 
 export interface CreateTweetTypes {
   description: string;
@@ -25,6 +25,7 @@ export interface TweetCommentTypes {
     firstname: string
     lastname: string
   }
+  _count: CommentLikeCountTypes
   likes: CommentLikeTypes[]
 }
 

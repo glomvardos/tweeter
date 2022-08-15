@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div className='flex gap-6'>
-      <div>
+      <div className='w-full'>
         <CreateTweet />
         <Tweets tweets={tweets} />
       </div>

@@ -8,21 +8,21 @@ import { UserTypes } from '../../interfaces/user'
 
 interface Props {
   commentId: number
-  likes:TweetCommentTypes['likes']
+  likes: TweetCommentTypes['likes']
+  totalLikes: TweetCommentTypes['_count']['likes']
 }
 
-const TweetCommentLike = ({ commentId, likes }:Props) => {
-  const { data: authUser } = useCache<UserTypes>('user')
-  const like = useMemo(() => likes.find(user => user.userId === authUser?.id), [likes] )
-  const { mutate: likeOrUnlikeComment } = useUpdateData({ key: 'tweets', mutationFn: like ? apiService.unlikeComment : apiService.likeComment })
-  const resourceId = like ? like.id : commentId
+const TweetCommentLike = ({ commentId, likes, totalLikes }:Props) => {
+  const isLiked =  likes.length === 1
+  const { mutate: likeOrUnlikeComment } = useUpdateData({ key: 'tweets', mutationFn: isLiked ? apiService.unlikeComment : apiService.likeComment })
+  const resourceId = isLiked ? likes[0].id : commentId
 
-
+  console.log(likes)
   return (
     <div className='flex items-center text-[#BDBDBD] text-sm font-semibold gap-2'>
-      <AiOutlineHeart size={18} className={`${like ? 'text-error' : 'text-[#BDBDBD]'} cursor-pointer`} onClick={() => likeOrUnlikeComment(resourceId)} />
+      <AiOutlineHeart size={18} className={`${isLiked ? 'text-error' : 'text-[#BDBDBD]'} cursor-pointer`} onClick={() => likeOrUnlikeComment(resourceId)} />
       <p>·</p>
-      <p>{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</p>
+      <p>{totalLikes} {totalLikes === 1 ? 'Like' : 'Likes'}</p>
     </div>
   )
 }

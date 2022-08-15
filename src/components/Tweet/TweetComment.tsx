@@ -46,7 +46,7 @@ const TweetComment = ({ comment }:Props) => {
             </p>
           </RenderIf>
         </div>
-        <TweetCommentLike commentId={comment.id} likes={comment.likes}/>
+        <TweetCommentLike commentId={comment.id} likes={comment.likes} totalLikes={comment._count.likes}/>
       </div>
     </div>
   )
