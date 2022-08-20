@@ -56,21 +56,21 @@ const Register = () => {
         onSubmit={formik.handleSubmit}
       >
         <InputWrapper>
-          <Label text="Firstname" />
+          <Label text="First Name" />
           <Input
-            id="Firstname"
+            id="First Name"
             type="text"
-            placeholder="Your Firstname"
+            placeholder="Your First Name"
             hasError={!!(formik.errors.firstname && formik.touched.firstname)}
             {...formik.getFieldProps('firstname')}
           />
         </InputWrapper>
         <InputWrapper>
-          <Label text="Lastname" />
+          <Label text="Last Name" />
           <Input
-            id="Lastname"
+            id="Last Name"
             type="text"
-            placeholder="Your Lastname"
+            placeholder="Your Last Name"
             hasError={!!(formik.errors.lastname && formik.touched.lastname)}
             {...formik.getFieldProps('lastname')}
           />

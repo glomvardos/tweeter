@@ -1,7 +1,7 @@
-import { TweetCommentTypes } from '../../interfaces/tweet'
+import { TweetCommentTypes } from '../../../interfaces/tweet'
 import TweetCommentForm from './TweetCommentForm'
-import Divider from '../UI/Divider'
-import UserIcon from '../UI/UserIcon'
+import Divider from '../../UI/Divider'
+import UserIcon from '../../UI/UserIcon'
 import TweetComment from './TweetComment'
 
 interface Props {
@@ -13,9 +13,9 @@ interface Props {
 const TweetComments = ({ comments = [], showComments, tweetId }:Props) => {
   const displayComments = comments.map(comment => <TweetComment key={comment.id} comment={comment} />)
 
-  const showCommentsClasses = showComments ? 'max-h-[5000px]' : 'max-h-0 overflow-y-hidden'
+  const showCommentsClasses = showComments ? 'h-max' : 'h-0 overflow-y-hidden'
   return (
-    <div className={`mt-[10px] ${showCommentsClasses} transition-all duration-300 `}>
+    <div className={`mt-[10px] ${showCommentsClasses}`}>
       <div className='flex w-full gap-4 mb-[10px]'>
         <div className='min-w-[48px]'>
           <UserIcon width='w-12'/>

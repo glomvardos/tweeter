@@ -7,3 +7,12 @@ export interface CommentLikeTypes {
   userId: number;
   commentId: number;
 }
+
+export interface TweetLikeTypes {
+  id: number;
+  userId: number;
+  tweetId: number;
+}
+
+
+

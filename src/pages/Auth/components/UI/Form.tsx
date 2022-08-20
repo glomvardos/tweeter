@@ -27,10 +27,10 @@ const Form = ({
   return (
     <form
       {...restProps}
-      className="flex flex-col gap-6 shadow-xl rounded-xl p-8 sm:p-16 max-w-[600px] w-full"
+      className="bg-dark-gray flex flex-col gap-6 shadow-xl rounded-xl p-8 sm:p-16 max-w-[600px] w-full"
     >
       <div className="flex flex-col items-center gap-2">
-        <h2 className="text-black font-bold text-2xl">{title}</h2>
+        <h2 className="text-white font-semibold text-2xl">{title}</h2>
         <p className="text-center text-gray-400">{text}</p>
       </div>
       <div className={formDisplay}>

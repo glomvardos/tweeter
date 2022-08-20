@@ -13,8 +13,8 @@ const NavLink = ({ text, path }: Props) => {
     <Link
       to={path}
       className={({ isActive }) =>
-        `flex items-center border-t-2 h-full px-5 ${
-          isActive ? activeLinkClass : 'bg-white border-b-2 border-b-white'
+        `flex items-center border-t-2 border-t-black h-full px-5 ${
+          isActive ? activeLinkClass : 'bg-black text-white border-b-2 border-b-black'
         }`
       }
     >

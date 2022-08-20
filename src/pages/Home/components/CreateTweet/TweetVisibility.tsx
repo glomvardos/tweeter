@@ -35,7 +35,7 @@ const TweetVisibility = ({ isPublic, setIsPublic }: Props) => {
       </div>
 
       <Dropdown showDropdown={isOpen} style={{ top: '60px' }}>
-        <Text text="Who can see this?" color="text-black" />
+        <Text text="Who can see this?" color="text-primary-text" />
         <Text text="Choose who can see this tweet" color="text-primary-text" />
         <Divider />
         <DropdownItem

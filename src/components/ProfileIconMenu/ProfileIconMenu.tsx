@@ -39,8 +39,8 @@ const ProfileIconMenu = () => {
         className="cursor-pointer flex items-center gap-3 h-full"
       >
         <ProfileIcon imgSrc="" />
-        <p className="hidden sm:block">{fullName}</p>
-        <MdKeyboardArrowDown size={20} />
+        <p className="hidden sm:block text-white">{fullName}</p>
+        <MdKeyboardArrowDown size={20} color='#fff' />
       </div>
 
       <Dropdown showDropdown={isOpen} style={{ top: '80px', right: '0' }}>

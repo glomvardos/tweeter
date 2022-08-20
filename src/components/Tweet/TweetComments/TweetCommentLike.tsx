@@ -1,7 +1,7 @@
 import { AiOutlineHeart } from 'react-icons/ai'
-import useUpdateData from '../../hooks/useUpdateData'
-import apiService from '../../services/api/apiService'
-import { TweetCommentTypes } from '../../interfaces/tweet'
+import useUpdateData from '../../../hooks/useUpdateData'
+import apiService from '../../../services/api/apiService'
+import { TweetCommentTypes } from '../../../interfaces/tweet'
 
 interface Props {
   commentId: number

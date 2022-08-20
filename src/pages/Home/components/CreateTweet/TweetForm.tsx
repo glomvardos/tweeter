@@ -29,10 +29,10 @@ const TweetForm = () => {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} >
       <textarea
         placeholder="What's happening?"
-        className="w-full p-2 placeholder:font-medium outline-none resize-none"
+        className="bg-dark-gray text-primary-text w-full p-2 placeholder:font-medium outline-none resize-none"
         {...formik.getFieldProps('description')}
         rows={3}
       />

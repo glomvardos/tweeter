@@ -3,11 +3,11 @@ import { TweetTypes } from '../../interfaces/tweet'
 import UserIcon from '../../components/UI/UserIcon'
 import TweetUserDetails from '../../components/Tweet/TweetUserDetails'
 import Divider from '../../components/UI/Divider'
-import TweetActions from '../../components/Tweet/TweetActions'
-import TweetActionsCount from '../../components/Tweet/TweetActionsCount'
+import TweetActions from '../../components/Tweet/TweetActions/TweetActions'
+import TweetActionsCount from '../../components/Tweet/TweetActions/TweetActionsCount'
 import TweetDescription from '../../components/Tweet/TweetDescription'
 import placeholder from '../../assets/images/placeholder.png'
-import TweetComments from '../../components/Tweet/TweetComments'
+import TweetComments from '../../components/Tweet/TweetComments/TweetComments'
 
 interface Props {
   tweet: TweetTypes
@@ -18,7 +18,7 @@ const Tweet = ({ tweet }:Props) => {
   useMemo(() => tweet.comments.sort((a, b) => b.createdAt.localeCompare(a.createdAt)), [tweet])
 
   return (
-    <div className='bg-white rounded-xl shadow-sm p-5'>
+    <div className='bg-dark-gray rounded-xl shadow-md p-5'>
       <div className='flex'>
         <UserIcon width='w-12'/>
         <TweetUserDetails firstname={tweet.user.firstname} lastname={tweet.user.lastname}
@@ -30,7 +30,7 @@ const Tweet = ({ tweet }:Props) => {
       </div>
       <TweetActionsCount commentsCount={tweet.comments.length}/>
       <Divider/>
-      <TweetActions setShowComments={setShowComments}/>
+      <TweetActions setShowComments={setShowComments} likes={tweet.likes} tweetId={tweet.id} />
       <Divider/>
       <TweetComments comments={tweet.comments} showComments={showComments} tweetId={tweet.id}/>
     </div>

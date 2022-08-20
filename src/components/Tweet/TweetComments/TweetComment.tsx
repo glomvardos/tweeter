@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { TweetCommentTypes } from '../../interfaces/tweet'
-import UserIcon from '../UI/UserIcon'
-import stringMethods from '../../utils/stringMethods'
+import { TweetCommentTypes } from '../../../interfaces/tweet'
+import UserIcon from '../../UI/UserIcon'
+import stringMethods from '../../../utils/stringMethods'
 import moment from 'moment'
-import RenderIf from '../UI/RenderIf'
-import useWidth from '../../hooks/useWidth'
+import RenderIf from '../../UI/RenderIf'
+import useWidth from '../../../hooks/useWidth'
 import TweetCommentLike from './TweetCommentLike'
 
 interface Props {
@@ -25,9 +25,9 @@ const TweetComment = ({ comment }:Props) => {
       </div>
 
       <div className='w-full flex flex-col gap-2'>
-        <div className='bg-[#FAFAFA] rounded-lg w-full px-[15px] py-[10px]'>
+        <div className='bg-black shadow-md rounded-lg w-full px-[15px] py-[10px]'>
           <div className='flex flex-col items-start gap-1 md:flex-row md:items-end md:gap-2 mb-[8px]'>
-            <p className='text-sm font-medium'>
+            <p className='text-sm font-medium text-white'>
               {stringMethods.capitalize(comment.user.firstname)} {stringMethods.capitalize(comment.user.lastname)}
             </p>
             <p className='text-xs text-[#BDBDBD] font-medium'>{moment(comment.createdAt).format('DD MMMM yyyy - HH:mm')}</p>

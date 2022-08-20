@@ -16,7 +16,7 @@ const DropdownItem = ({
   return (
     <div
       onClick={onClickHandler}
-      className={`${color} flex items-center gap-3 p-3 hover:bg-[#F2F2F2] transition-all duration-200 cursor-pointer rounded-lg`}
+      className={`${color} flex items-center gap-3 p-3 hover:bg-black transition-all duration-200 cursor-pointer rounded-lg`}
     >
       {iconElement}
       <p>{text}</p>

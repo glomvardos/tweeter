@@ -1,30 +1,32 @@
 import { Dispatch, SetStateAction } from 'react'
 import { FiMessageSquare } from 'react-icons/fi'
 import { BsArrowCounterclockwise, BsBookmark } from 'react-icons/bs'
-import { AiOutlineHeart } from 'react-icons/ai'
 import TweetAction from './TweetAction'
+import { TweetLikeTypes } from '../../../interfaces/likes'
+import TweetLike from './TweetLike'
 
 interface Props {
   setShowComments: Dispatch<SetStateAction<boolean>>
+  likes: TweetLikeTypes[]
+  tweetId: number
 }
 
-const TweetActions = ({ setShowComments }:Props) => {
+const TweetActions = ({ setShowComments, likes = [], tweetId }:Props) => {
+
   return (
     <div className='py-1 flex justify-around items-center w-full'>
       <TweetAction text='Comment' onClickHandler={() => setShowComments(prevState => !prevState)}>
-        <FiMessageSquare size={20} color='#4F4F4F' />
+        <FiMessageSquare size={20} className='text-primary-text' />
       </TweetAction>
 
       <TweetAction text='Retweet' onClickHandler={() => {}}>
-        <BsArrowCounterclockwise size={20} color='#4F4F4F'/>
+        <BsArrowCounterclockwise size={20} className='text-primary-text' />
       </TweetAction>
 
-      <TweetAction text='Like' onClickHandler={() => {}}>
-        <AiOutlineHeart size={20} color='#4F4F4F'/>
-      </TweetAction>
+      <TweetLike likes={likes} tweetId={tweetId}/>
 
       <TweetAction text='Save' onClickHandler={() => {}}>
-        <BsBookmark size={20} color='#4F4F4F'/>
+        <BsBookmark size={20} className='text-primary-text' />
       </TweetAction>
     </div>
   )

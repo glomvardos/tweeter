@@ -17,7 +17,7 @@ const Dropdown = ({ showDropdown, style, children }: Props) => {
   return (
     <div
       style={style}
-      className={`w-max min-w-[200px] bg-white absolute z-10 shadow-md rounded-xl p-4 ${showDropdownClass} origin-top transition-all duration-500 ease-in-out`}
+      className={`w-max min-w-[200px] bg-dark-gray absolute z-10 shadow-md rounded-xl p-4 ${showDropdownClass} origin-top transition-all duration-500 ease-in-out`}
     >
       {children}
     </div>

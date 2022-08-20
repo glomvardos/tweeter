@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Text = ({ text, color, pb = 'pb-2' }: Props) => {
-  return <p className={` font-semibold text-sm ${color} ${pb}`}>{text}</p>
+  return <p className={`font-semibold text-sm ${color} ${pb}`}>{text}</p>
 }
 
 export default Text

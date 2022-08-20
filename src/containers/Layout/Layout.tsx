@@ -8,7 +8,7 @@ const Layout = () => {
   useGetData({ queryKey: 'user', queryFn: apiService.getAuthUser })
 
   return (
-    <main className="flex flex-col bg-[#F2F2F2] min-h-full">
+    <main className="flex flex-col min-h-full bg-black">
       <Header />
       <ContentContainer>
         <Outlet />
