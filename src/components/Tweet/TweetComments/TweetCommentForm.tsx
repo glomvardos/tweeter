@@ -8,7 +8,7 @@ interface Props {
   tweetId: number
 }
 const TweetCommentForm = ({ tweetId }:Props) => {
-  const { mutate: createComment } = useUpdateData({ key:'tweets', mutationFn: apiService.createTweetComment })
+  const { mutate: createComment } = useUpdateData({ key:['tweets', 'bookmarks'], mutationFn: apiService.createTweetComment })
 
   const formik = useFormik({
     initialValues: {

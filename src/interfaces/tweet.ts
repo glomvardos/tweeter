@@ -1,5 +1,5 @@
 import { CommentLikeCountTypes, CommentLikeTypes, TweetLikeTypes } from './likes'
-import { SavedTweetCountTypes, SaveTweetTypes } from './saveTweet'
+import { SavedTweetCountTypes, SavedTweetTypes } from './saveTweet'
 
 export interface CreateTweetTypes {
   description: string;
@@ -12,7 +12,7 @@ export interface TweetTypes {
   description: string
   isPublic: boolean
   likes: TweetLikeTypes[]
-  saveTweet: SaveTweetTypes[]
+  savedTweets: SavedTweetTypes[]
   user: {
     firstname: string
     lastname: string

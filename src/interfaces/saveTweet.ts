@@ -1,4 +1,4 @@
-export interface SaveTweetTypes {
+export interface SavedTweetTypes {
   id: number;
   tweetId: number;
   userId: number;

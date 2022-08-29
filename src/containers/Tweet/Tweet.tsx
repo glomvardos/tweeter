@@ -30,7 +30,7 @@ const Tweet = ({ tweet }:Props) => {
       </div>
       <TweetActionsCount commentsCount={tweet.comments.length}/>
       <Divider/>
-      <TweetActions setShowComments={setShowComments} likes={tweet.likes} tweetId={tweet.id} />
+      <TweetActions setShowComments={setShowComments} likes={tweet.likes} savedTweets={tweet.savedTweets} tweetId={tweet.id} />
       <Divider/>
       <TweetComments comments={tweet.comments} showComments={showComments} tweetId={tweet.id}/>
     </div>

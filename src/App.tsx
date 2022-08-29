@@ -11,6 +11,7 @@ import Layout from './containers/Layout/Layout'
 import Home from './pages/Home/Home'
 import RenderIf from './components/UI/RenderIf'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import Bookmarks from './pages/Bookmarks/Bookmarks'
 
 const queryClient = new QueryClient()
 
@@ -27,7 +28,7 @@ const App = () => {
           <Route element={<Layout />}>
             <Route path={routes.home} element={<Home />} />
             <Route path={routes.explore} element={<div>Explore</div>} />
-            <Route path={routes.bookmarks} element={<div>Bookmarks</div>} />
+            <Route path={routes.bookmarks} element={<Bookmarks />} />
           </Route>
         </Route>
       </Routes>
