@@ -5,5 +5,6 @@ export const routes = {
   profile: '/profile',
   explore: '/explore',
   bookmarks: '/bookmarks',
+  settings: '/settings',
 }
 

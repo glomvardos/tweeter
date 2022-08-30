@@ -29,7 +29,22 @@ const validationSchema = {
       comment: yup.string().required(),
     })
   },
+  updateInformation: (isPasswordNotEmpty: boolean) => {
+    return yup.object({
+      firstName: yup.string().required(),
+      lastName: yup.string().required(),
+      email: yup.string().email().required(),
+      password: yup.string().optional(),
+      confirmPassword: isPasswordNotEmpty
+        ? yup
+          .string()
+          .oneOf([yup.ref('password') ], 'Passwords must match')
+          .required()
+        : yup.string().optional(),
+    })
+  },
 }
+
 
 
 export default validationSchema

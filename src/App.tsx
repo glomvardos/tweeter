@@ -1,17 +1,18 @@
 import { Route, Routes } from 'react-router-dom'
 import { Slide, ToastContainer } from 'react-toastify'
 import { QueryClientProvider, QueryClient } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import PublicRoutes from './components/Routes/PublicRoutes'
-import { routes } from './constants/routes'
-import 'react-toastify/dist/ReactToastify.css'
 import ProtectedRoutes from './components/Routes/ProtectedRoutes'
 import Layout from './containers/Layout/Layout'
 import Home from './pages/Home/Home'
 import RenderIf from './components/UI/RenderIf'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import Bookmarks from './pages/Bookmarks/Bookmarks'
+import Settings from './pages/Settings/Settings'
+import { routes } from './constants/routes'
+import 'react-toastify/dist/ReactToastify.css'
 
 const queryClient = new QueryClient()
 
@@ -29,6 +30,7 @@ const App = () => {
             <Route path={routes.home} element={<Home />} />
             <Route path={routes.explore} element={<div>Explore</div>} />
             <Route path={routes.bookmarks} element={<Bookmarks />} />
+            <Route path={routes.settings} element={<Settings />} />
           </Route>
         </Route>
       </Routes>

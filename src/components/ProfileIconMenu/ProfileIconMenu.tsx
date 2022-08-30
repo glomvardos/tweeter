@@ -13,11 +13,12 @@ import { UserTypes } from '../../interfaces/user'
 import tokenMethods from '../../utils/token/tokenMethods'
 import { routes } from '../../constants/routes'
 import { useQueryClient } from 'react-query'
+import userMethods from '../../utils/user/userMethods'
 
 const ProfileIconMenu = () => {
   const { ref, setIsOpen, isOpen } = useToggleMenu()
   const queryClient = useQueryClient()
-  const { data: user } = useCache<UserTypes>('user')
+  const user = userMethods.getUser()
   const navigate = useNavigate()
   const fullName =
     user?.firstname &&
@@ -30,6 +31,7 @@ const ProfileIconMenu = () => {
     navigate(routes.login)
     queryClient.clear()
     tokenMethods.removeToken()
+    userMethods.removeUser()
   }
 
   return (
@@ -49,7 +51,7 @@ const ProfileIconMenu = () => {
           text="My Profile"
         />
         <DropdownItem iconElement={<HiUsers size={20} />} text="Group Chat" />
-        <DropdownItem iconElement={<MdSettings size={23} />} text="Settings" />
+        <DropdownItem iconElement={<MdSettings size={23} />} text="Settings" onClickHandler={() => navigate(routes.settings)} />
         <Divider />
         <DropdownItem
           color="text-error"

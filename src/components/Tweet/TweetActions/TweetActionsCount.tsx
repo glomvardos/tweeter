@@ -1,7 +1,7 @@
 interface Props {
   commentsCount: number
   retweetsCount?: number
-  savedCount?: number
+  savedCount: number
 }
 
 const TweetActionsCount = ({ commentsCount = 200, retweetsCount = 32, savedCount = 44 }:Props) => {

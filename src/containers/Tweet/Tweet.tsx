@@ -28,7 +28,7 @@ const Tweet = ({ tweet }:Props) => {
       <div className='w-full h-full'>
         <img src={placeholder} className='rounded-xl w-full aspect-[4/3]  md:aspect-[2/1]' alt=''/>
       </div>
-      <TweetActionsCount commentsCount={tweet.comments.length}/>
+      <TweetActionsCount commentsCount={tweet.comments.length} savedCount={tweet._count.savedTweets}/>
       <Divider/>
       <TweetActions setShowComments={setShowComments} likes={tweet.likes} savedTweets={tweet.savedTweets} tweetId={tweet.id} />
       <Divider/>

@@ -4,8 +4,8 @@ import { AxiosError } from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
-import Input from './components/UI/Input'
-import Label from './components/UI/Label'
+import Label from '../../components/Form/Label'
+import Input from '../../components/Form/Input'
 import Form from './components/UI/Form'
 import InputWrapper from '../../components/UI/InputWrapper'
 import Container from './components/UI/Container'
@@ -17,8 +17,9 @@ import apiService from '../../services/api/apiService'
 
 
 import { ServerError } from '../../interfaces/api'
-import tokenMethods from '../../utils/token/tokenMethods'
 import { routes } from '../../constants/routes'
+import userMethods from '../../utils/user/userMethods'
+
 
 
 const Login = () => {
@@ -28,7 +29,7 @@ const Login = () => {
     (values: LoginTypes) => apiService.login(values),
     {
       onSuccess: (data) => {
-        tokenMethods.saveToken({ token: data?.data })
+        userMethods.saveUser(data)
         navigate(routes.home)
       },
       onError: (error: AxiosError<ServerError>) => {
