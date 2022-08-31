@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios'
 import { LoginTypes, RegisterTypes } from '../../interfaces/auth'
+import { UpdateUserTypes } from '../../interfaces/user'
 
 export interface AuthServiceInterface {
   login({
@@ -15,5 +16,7 @@ export interface AuthServiceInterface {
   }: RegisterTypes): Promise<AxiosResponse | undefined>;
 
   getAuthUser(): Promise<AxiosResponse | undefined>;
+
+  updateUser(id: number, values: UpdateUserTypes): Promise<AxiosResponse | undefined>;
 }
 

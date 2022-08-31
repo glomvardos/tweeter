@@ -5,6 +5,7 @@ import { ServerError } from '../../interfaces/api'
 import { AuthServiceInterface } from './authService.interface'
 import { apiException } from '../../utils/apiException'
 import tokenMethods from '../../utils/token/tokenMethods'
+import { UpdateUserTypes } from '../../interfaces/user'
 
 class AuthService implements AuthServiceInterface {
   public async login({ email, password }: LoginTypes) {
@@ -53,6 +54,25 @@ class AuthService implements AuthServiceInterface {
         apiException(error as AxiosError<ServerError>)
       }
     }
+  }
+
+  public async updateUser(id:number, values: UpdateUserTypes) {
+    try {
+      const data = values.password!.trim().length > 0
+        ? { ...values }
+        : {
+          firstname: values.firstname,
+          lastname: values.lastname,
+          email: values.email,
+        }
+      const response = await axiosInstance.patch('/users/user', data)
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        apiException(error as AxiosError<ServerError>)
+      }
+    }
+
   }
 }
 

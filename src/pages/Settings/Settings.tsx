@@ -1,6 +1,7 @@
 import PageTitle from '../../components/UI/PageTitle'
 import SettingsForm from './components/SettingsForm'
 import Divider from '../../components/UI/Divider'
+import DeleteAccount from './components/DeleteAccount'
 
 const Settings = () => {
   return (
@@ -8,6 +9,7 @@ const Settings = () => {
       <PageTitle text='Settings'/>
       <SettingsForm/>
       <Divider/>
+      <DeleteAccount/>
     </div>
   )
 }

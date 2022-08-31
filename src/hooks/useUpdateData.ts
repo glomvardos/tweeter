@@ -12,7 +12,7 @@ const useUpdateData = <T extends unknown>  ({ key, mutationFn }:Props<T>) => {
   const queryClient = useQueryClient()
   const { isLoading, isError, error, mutate } = useMutation((params:T) => mutationFn(params), {
     onSuccess: async () => {
-      if (key.length !== 0) {
+      if (Array.isArray(key)) {
         for (const k of key) {
           await queryClient.invalidateQueries(k)
         }

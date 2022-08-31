@@ -1,7 +1,7 @@
 
 interface Props {
   text: string;
-  color: 'bg-red' | 'bg-primary-blue';
+  color: 'bg-red-600' | 'bg-primary-blue';
   type: 'submit' | 'button';
 }
 const Button = ({ text, type, color } : Props) => {

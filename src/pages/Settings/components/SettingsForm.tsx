@@ -1,26 +1,43 @@
-import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import Input from '../../../components/Form/Input'
 import Label from '../../../components/Form/Label'
-import useCache from '../../../hooks/useCache'
-import { UserTypes } from '../../../interfaces/user'
 import userMethods from '../../../utils/user/userMethods'
 import InputWrapper from '../../../components/UI/InputWrapper'
 import Button from './Button'
 import validationSchema from '../../../utils/validationSchema'
+import apiService from '../../../services/api/apiService'
+import { toast } from 'react-toastify'
+import UserMethods from '../../../utils/user/userMethods'
+import { UpdateUserTypes } from '../../../interfaces/user'
 
 const SettingsForm = () => {
   const authUser = userMethods.getUser()
+
   const formik = useFormik({
-    initialValues: {
-      firstName: authUser?.firstname,
-      lastName: authUser?.lastname,
-      email: authUser?.email,
+    initialValues:  {
+      firstname: authUser!.firstname,
+      lastname: authUser!.lastname,
+      email: authUser!.email,
       password: '',
       confirmPassword: '',
     },
     validationSchema: () => validationSchema.updateInformation(formik.values.password.length > 0),
     onSubmit: values => {
+      apiService.updateUser(authUser!.id, values)
+        .then((res) => {
+          toast.success('Your information has been updated successfully!')
+          UserMethods.saveUser(res)
+          formik.setValues({
+            firstname: res.firstname,
+            lastname: res.lastname,
+            email: res.email,
+            password: '',
+            confirmPassword: '',
+          })
+        })
+        .catch((error) =>
+          toast.error(error.message),
+        )
     },
   })
 
@@ -33,9 +50,9 @@ const SettingsForm = () => {
           <Input
             type='text'
             id='First Name'
-            hasError={!!(formik.touched.firstName && formik.errors.firstName)}
+            hasError={!!(formik.touched.firstname && formik.errors.firstname)}
             placeholder='Enter your first name'
-            {...formik.getFieldProps('firstName')}
+            {...formik.getFieldProps('firstname')}
           />
         </InputWrapper>
         <InputWrapper>
@@ -43,9 +60,9 @@ const SettingsForm = () => {
           <Input
             type='text' 
             id='Last Name'
-            hasError={!!(formik.touched.lastName && formik.errors.lastName)}
+            hasError={!!(formik.touched.lastname && formik.errors.lastname)}
             placeholder='Enter your last name'
-            {...formik.getFieldProps('lastName')}
+            {...formik.getFieldProps('lastname')}
           />
         </InputWrapper>
       </div>

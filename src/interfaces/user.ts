@@ -7,3 +7,11 @@ export interface UserTypes {
   updatedAt: string;
 }
 
+export interface UpdateUserTypes {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password?: string;
+}
+
+
