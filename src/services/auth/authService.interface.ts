@@ -17,6 +17,8 @@ export interface AuthServiceInterface {
 
   getAuthUser(): Promise<AxiosResponse | undefined>;
 
-  updateUser(id: number, values: UpdateUserTypes): Promise<AxiosResponse | undefined>;
+  updateUser(values: UpdateUserTypes): Promise<AxiosResponse | undefined>;
+
+  deleteUser(): Promise<AxiosResponse | undefined>;
 }
 

@@ -8,16 +8,14 @@ import Dropdown from '../Dropdown/Dropdown'
 import DropdownItem from '../Dropdown/DropdownItem'
 import Divider from '../UI/Divider'
 import useToggleMenu from '../../hooks/useToggleMenu'
-import useCache from '../../hooks/useCache'
-import { UserTypes } from '../../interfaces/user'
-import tokenMethods from '../../utils/token/tokenMethods'
+import useLogout from '../../hooks/useLogout'
 import { routes } from '../../constants/routes'
-import { useQueryClient } from 'react-query'
 import userMethods from '../../utils/user/userMethods'
+
 
 const ProfileIconMenu = () => {
   const { ref, setIsOpen, isOpen } = useToggleMenu()
-  const queryClient = useQueryClient()
+  const { onLogout } = useLogout()
   const user = userMethods.getUser()
   const navigate = useNavigate()
   const fullName =
@@ -27,12 +25,7 @@ const ProfileIconMenu = () => {
       user.lastname,
     )}`
 
-  const onLogout = () => {
-    navigate(routes.login)
-    queryClient.clear()
-    tokenMethods.removeToken()
-    userMethods.removeUser()
-  }
+
 
   return (
     <div ref={ref} className="relative h-full">

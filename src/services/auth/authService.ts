@@ -56,7 +56,7 @@ class AuthService implements AuthServiceInterface {
     }
   }
 
-  public async updateUser(id:number, values: UpdateUserTypes) {
+  public async updateUser(values: UpdateUserTypes) {
     try {
       const data = values.password!.trim().length > 0
         ? { ...values }
@@ -72,8 +72,19 @@ class AuthService implements AuthServiceInterface {
         apiException(error as AxiosError<ServerError>)
       }
     }
+  }
 
+  public async deleteUser() {
+    try {
+      const response = await axiosInstance.delete('/users/user')
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        apiException(error as AxiosError<ServerError>)
+      }
+    }
   }
 }
+
 
 export default AuthService

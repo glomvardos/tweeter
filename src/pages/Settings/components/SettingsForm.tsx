@@ -23,7 +23,7 @@ const SettingsForm = () => {
     },
     validationSchema: () => validationSchema.updateInformation(formik.values.password.length > 0),
     onSubmit: values => {
-      apiService.updateUser(authUser!.id, values)
+      apiService.updateUser(values)
         .then((res) => {
           toast.success('Your information has been updated successfully!')
           UserMethods.saveUser(res)
