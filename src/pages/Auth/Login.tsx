@@ -40,7 +40,7 @@ const Login = () => {
 
   const initialValues: LoginTypes = {
     email: 'test@example.com',
-    password: '12345',
+    password: 'TwitterClone2023',
   }
 
   const formik = useFormik({
