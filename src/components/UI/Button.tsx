@@ -1,6 +1,8 @@
+import { ReactNode } from 'react'
 import Spinner from './Spinner'
 
-interface Props {
+interface Props  {
+  children?: ReactNode
   text: string;
   width: string;
   height: string;
@@ -8,12 +10,13 @@ interface Props {
   isLoading?: boolean;
 }
 
-const Button = ({ text, width, height, onClickHandler, isLoading }: Props) => {
+const Button = ({ children, text, width, height, onClickHandler, isLoading }: Props) => {
   return (
     <button
-      className={`text-sm font-medium rounded-md bg-primary-blue text-white outline-none hover:opacity-90 transition-opacity ${width} ${height}`}
+      className={`flex justify-center items-center gap-1 text-sm font-medium rounded-md bg-primary-blue text-white outline-none hover:opacity-90 transition-opacity ${width} ${height}`}
       onClick={onClickHandler}
     >
+      {children}
       {isLoading ? <Spinner /> : text}
 
     </button>

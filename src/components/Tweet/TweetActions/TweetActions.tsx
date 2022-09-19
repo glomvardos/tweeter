@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { FiMessageSquare } from 'react-icons/fi'
-import { BsArrowCounterclockwise, BsBookmark } from 'react-icons/bs'
+import { BsArrowCounterclockwise } from 'react-icons/bs'
 import TweetAction from './TweetAction'
 import { TweetLikeTypes } from '../../../interfaces/likes'
 import TweetLike from './TweetLike'

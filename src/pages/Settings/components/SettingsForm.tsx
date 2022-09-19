@@ -8,7 +8,6 @@ import validationSchema from '../../../utils/validationSchema'
 import apiService from '../../../services/api/apiService'
 import { toast } from 'react-toastify'
 import UserMethods from '../../../utils/user/userMethods'
-import { UpdateUserTypes } from '../../../interfaces/user'
 
 const SettingsForm = () => {
   const authUser = userMethods.getUser()

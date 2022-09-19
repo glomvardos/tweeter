@@ -5,7 +5,7 @@ import ContentContainer from '../../components/UI/ContentContainer'
 const Layout = () => {
 
   return (
-    <main className="flex flex-col min-h-full bg-black">
+    <main className="flex flex-col min-h-full bg-black relative">
       <Header />
       <ContentContainer>
         <Outlet />

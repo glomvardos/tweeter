@@ -13,6 +13,7 @@ import Bookmarks from './pages/Bookmarks/Bookmarks'
 import Settings from './pages/Settings/Settings'
 import { routes } from './constants/routes'
 import 'react-toastify/dist/ReactToastify.css'
+import MyProfile from './pages/MyProfile/MyProfile'
 
 const queryClient = new QueryClient()
 
@@ -31,6 +32,7 @@ const App = () => {
             <Route path={routes.explore} element={<div>Explore</div>} />
             <Route path={routes.bookmarks} element={<Bookmarks />} />
             <Route path={routes.settings} element={<Settings />} />
+            <Route path={routes.profile} element={<MyProfile/>} />
           </Route>
         </Route>
       </Routes>

@@ -42,6 +42,7 @@ const ProfileIconMenu = () => {
         <DropdownItem
           iconElement={<FaUserCircle size={20} />}
           text="My Profile"
+          onClickHandler={() => navigate(routes.profile)}
         />
         <DropdownItem iconElement={<HiUsers size={20} />} text="Group Chat" />
         <DropdownItem iconElement={<MdSettings size={23} />} text="Settings" onClickHandler={() => navigate(routes.settings)} />
