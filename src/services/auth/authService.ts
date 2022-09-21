@@ -64,6 +64,7 @@ class AuthService implements AuthServiceInterface {
           firstname: values.firstname,
           lastname: values.lastname,
           email: values.email,
+          description: values.description,
         }
       const response = await axiosInstance.patch('/users/user', data)
       return response.data

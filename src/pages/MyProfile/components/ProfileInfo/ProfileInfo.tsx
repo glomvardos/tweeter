@@ -20,7 +20,7 @@ const ProfileInfo = () => {
           <IoPersonAdd/>
         </Button>
       </div>
-
+      <p className='mt-5 text-[#828282] font-medium text-lg whitespace-pre'>{user?.description}</p>
     </div>
   )
 }

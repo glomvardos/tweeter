@@ -17,6 +17,7 @@ const SettingsForm = () => {
       firstname: authUser!.firstname,
       lastname: authUser!.lastname,
       email: authUser!.email,
+      description: authUser!.description || '',
       password: '',
       confirmPassword: '',
     },
@@ -30,6 +31,7 @@ const SettingsForm = () => {
             firstname: res.firstname,
             lastname: res.lastname,
             email: res.email,
+            description: res.description,
             password: '',
             confirmPassword: '',
           })
@@ -73,6 +75,17 @@ const SettingsForm = () => {
           hasError={!!(formik.touched.email && formik.errors.email)}
           placeholder='Enter your email'
           {...formik.getFieldProps('email')}
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <Label text='Description'/>
+        <textarea
+          id='Description'
+          className={`${
+            !!(formik.touched.description && formik.errors.description) ? 'border-red-500' : 'border-gray-300'
+          } w-full text-base rounded-lg px-3 py-[0.625rem] placeholder:text-sm placeholder:text-gray-300 border-[0.0625rem] border-solid outline-none focus:outline-none hover:border-primary-blue focus:border-primary-blue focus:shadow-lg transition-all duration-200`}
+          placeholder='Enter your description'
+          {...formik.getFieldProps('description')}
         />
       </InputWrapper>
       <InputWrapper >

@@ -35,6 +35,7 @@ const validationSchema = {
       firstname: yup.string().trim().required(),
       lastname: yup.string().trim().required(),
       email: yup.string().trim().email().required(),
+      description: yup.string().trim().max(128, 'Description is too long'),
       password: yup.string().trim().optional(),
       confirmPassword: isPasswordNotEmpty
         ? yup
