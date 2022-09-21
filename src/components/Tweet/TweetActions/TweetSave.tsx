@@ -13,7 +13,7 @@ interface Props {
 
 const TweetSave = ({ tweetId, savedTweets = [] }:Props) => {
   const isSaved = savedTweets.length === 1
-  const { mutate: saveTweet } = useUpdateData({ key: ['tweets', 'bookmarks'], mutationFn: isSaved ? apiService.unSaveTweet : apiService.saveTweet })
+  const { mutate: saveTweet } = useUpdateData({ key: ['tweets', 'bookmarks', 'myTweets'], mutationFn: isSaved ? apiService.unSaveTweet : apiService.saveTweet })
   const resourceId = isSaved ? savedTweets[0].id : tweetId
 
   return (

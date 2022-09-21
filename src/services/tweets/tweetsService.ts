@@ -27,6 +27,18 @@ class TweetsService implements TweetServiceInterface {
       }
     }
   }
+
+  public async userTweets() {
+    try {
+      const response = await axiosInstance.get('/tweets/my-tweets')
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        apiException(error as AxiosError<ServerError>)
+      }
+    }
+  }
 }
+
 
 export default TweetsService

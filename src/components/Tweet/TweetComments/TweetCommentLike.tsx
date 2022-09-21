@@ -11,7 +11,7 @@ interface Props {
 
 const TweetCommentLike = ({ commentId, likes, totalLikes }:Props) => {
   const isLiked =  likes.length === 1
-  const { mutate: likeOrUnlikeComment } = useUpdateData({ key: ['tweets', 'bookmarks'], mutationFn: isLiked ? apiService.unlikeComment : apiService.likeComment })
+  const { mutate: likeOrUnlikeComment } = useUpdateData({ key: ['tweets', 'bookmarks', 'myTweets'], mutationFn: isLiked ? apiService.unlikeComment : apiService.likeComment })
   const resourceId = isLiked ? likes[0].id : commentId
 
   return (
